@@ -5,6 +5,27 @@ All notable changes to KimiClaw Business OS will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.1] - 2024-02-19
+
+### Security
+
+- **CRITICAL**: Updated aiohttp from 3.9.1 to 3.13.3
+  - Fixed zip bomb vulnerability in HTTP Parser auto_decompress
+  - Fixed denial of service when parsing malformed POST requests
+  - Fixed directory traversal vulnerability
+- **HIGH**: Updated python-multipart from 0.0.6 to 0.0.22
+  - Fixed arbitrary file write vulnerability
+  - Fixed denial of service via malformed multipart/form-data
+  - Fixed Content-Type header ReDoS vulnerability
+- **HIGH**: Updated Pillow from 10.1.0 to 10.3.0
+  - Fixed buffer overflow vulnerability in image processing
+- **MEDIUM**: Updated fastapi from 0.104.1 to 0.109.1
+  - Fixed Content-Type header ReDoS vulnerability
+
+**Total vulnerabilities fixed**: 8 (all patched)
+
+See SECURITY_PATCH.md for detailed information.
+
 ## [0.1.0] - 2024-02-19
 
 ### Added
