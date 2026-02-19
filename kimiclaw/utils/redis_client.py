@@ -1,6 +1,7 @@
 """Redis client and customer memory utilities."""
 
 import json
+from datetime import datetime
 from typing import Optional, Dict, Any, List
 import redis
 from loguru import logger
@@ -169,6 +170,3 @@ class RedisClient:
 
 # Global Redis client instance
 redis_client = RedisClient()
-
-
-from datetime import datetime
