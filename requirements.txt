@@ -4,6 +4,12 @@ uvicorn[standard]==0.24.0
 pydantic==2.5.0
 pydantic-settings==2.1.0
 python-dotenv==1.0.0
+# Core dependencies
+fastapi==0.109.1
+uvicorn[standard]==0.24.0
+python-dotenv==1.0.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
 
 # Database
 psycopg2-binary==2.9.9
@@ -54,6 +60,31 @@ psutil==5.9.6
 
 # Logging & Monitoring
 loguru==0.7.2
+alembic==1.12.1
+redis==5.0.1
+
+# AI and ML
+ollama==0.1.6
+
+# Communication
+twilio==8.10.3
+google-api-python-client==2.108.0
+google-auth-httplib2==0.1.1
+google-auth-oauthlib==1.1.0
+
+# Web scraping and lead generation
+requests==2.31.0
+beautifulsoup4==4.12.2
+serpapi==0.1.5
+
+# Task scheduling
+apscheduler==3.10.4
+
+# Utilities
+aiohttp==3.13.3
+python-multipart==0.0.22
+httpx==0.25.2
+jinja2==3.1.2
 
 # Testing
 pytest==7.4.3
