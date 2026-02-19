@@ -8,6 +8,7 @@ set -e
 
 KIMICLAW_VERSION="0.1.0"
 INSTALL_DIR="$HOME/.kimiclaw"
+REPO_URL="https://github.com/brandonlacoste9-tech/sml-business.git"
 
 echo "🐝 KimiClaw Business OS Installer v${KIMICLAW_VERSION}"
 echo "================================================"
@@ -95,7 +96,7 @@ echo "Downloading KimiClaw..."
 if [ -d ".git" ]; then
     git pull
 else
-    git clone https://github.com/brandonlacoste9-tech/sml-business.git .
+    git clone "$REPO_URL" .
 fi
 
 # Create virtual environment

@@ -66,8 +66,8 @@ class FinancialReconciliationLoop:
                         job_id=job.id,
                         invoice_number=f"INV-{datetime.now().strftime('%Y%m%d')}-{job.id}",
                         amount=job.actual_price,
-                        tax_amount=job.actual_price * 0.15,  # 15% tax
-                        total_amount=job.actual_price * 1.15,
+                        tax_amount=job.actual_price * settings.tax_rate,
+                        total_amount=job.actual_price * (1 + settings.tax_rate),
                         due_date=datetime.utcnow() + timedelta(days=30)
                     )
                     db.add(invoice)

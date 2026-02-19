@@ -12,7 +12,8 @@ class AdvertisingLoop:
     
     def __init__(self):
         self.campaign_times = [time(9, 0), time(15, 0)]  # 9am and 3pm
-        self.last_run = None
+        self.executed_today = set()  # Track which campaigns ran today
+        self.current_date = None
     
     async def run(self):
         """Main loop execution."""
@@ -31,15 +32,22 @@ class AdvertisingLoop:
         now = datetime.now().time()
         today = datetime.now().date()
         
+        # Reset executed campaigns on new day
+        if self.current_date != today:
+            self.executed_today = set()
+            self.current_date = today
+        
         for campaign_time in self.campaign_times:
-            # Check if it's time to run and we haven't run today yet
+            campaign_key = f"{campaign_time.hour}:{campaign_time.minute}"
+            
+            # Check if it's time to run and we haven't run this campaign today yet
             if (now.hour == campaign_time.hour and 
                 now.minute == campaign_time.minute and
-                (self.last_run is None or self.last_run != today)):
+                campaign_key not in self.executed_today):
                 
                 logger.info(f"Running advertising campaign at {campaign_time}")
                 await self.run_campaign()
-                self.last_run = today
+                self.executed_today.add(campaign_key)
     
     async def run_campaign(self):
         """Execute advertising campaign."""

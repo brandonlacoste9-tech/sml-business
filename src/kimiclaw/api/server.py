@@ -10,16 +10,20 @@ from kimiclaw.models.database import Customer, Job, Lead, BusinessMetrics, Inter
 from kimiclaw.integrations.ollama_client import ollama_client
 from sqlalchemy.orm import Session
 
+# Version info
+__version__ = "0.1.0"
+
 app = FastAPI(
     title="KimiClaw Business OS API",
     description="API for KimiClaw Business Operating System",
-    version="0.1.0"
+    version=__version__
 )
 
-# CORS middleware
+# CORS middleware - configured from environment
+allowed_origins = ["*"] if settings.debug else []  # Restrict in production
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

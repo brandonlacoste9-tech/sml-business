@@ -109,9 +109,14 @@ class LeadGenerationLoop:
             )
             
             # Extract number from response
-            score = int(''.join(filter(str.isdigit, response[:3])))
+            digits = ''.join(filter(str.isdigit, response[:10]))
+            if not digits:
+                logger.warning(f"No score digits found in AI response: {response[:50]}")
+                return 50  # Default score
+            
+            score = int(digits)
             return min(max(score, 0), 100)
-        except Exception as e:
+        except (ValueError, Exception) as e:
             logger.error(f"Lead scoring error: {e}")
             return 50  # Default score
     

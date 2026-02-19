@@ -52,6 +52,7 @@ class Settings(BaseSettings):
     pricing_mode: str = Field(default="dynamic", env="PRICING_MODE")
     default_hourly_rate: float = Field(default=75.0, env="DEFAULT_HOURLY_RATE")
     surge_pricing_multiplier: float = Field(default=1.3, env="SURGE_PRICING_MULTIPLIER")
+    tax_rate: float = Field(default=0.15, env="TAX_RATE")  # Default 15% (e.g., HST in Ontario)
     
     class Config:
         env_file = ".env"

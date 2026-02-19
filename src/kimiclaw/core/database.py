@@ -40,10 +40,10 @@ def get_db() -> Generator[Session, None, None]:
         db.close()
 
 
-def get_db_session() -> Session:
-    """Get database session for dependency injection."""
+def get_db_session() -> Generator[Session, None, None]:
+    """Get database session for FastAPI dependency injection."""
     db = SessionLocal()
     try:
-        return db
+        yield db
     finally:
-        pass  # Session will be closed by FastAPI
+        db.close()
