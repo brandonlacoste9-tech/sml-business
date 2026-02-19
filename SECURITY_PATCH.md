@@ -4,6 +4,22 @@
 
 This security patch addresses multiple vulnerabilities identified in project dependencies.
 
+## Latest Update (v0.1.2)
+
+### Pillow (10.3.0 → 12.1.1)
+
+**CVE Issues:**
+- **Out-of-Bounds Write**: Memory corruption when loading PSD images
+  - Affected: ≥ 10.3.0, < 12.1.1
+  - Fixed in: 12.1.1
+
+**Impact**: HIGH
+**Action**: Updated to 12.1.1
+
+---
+
+## Previous Fixes (v0.1.1)
+
 ## Vulnerabilities Fixed
 
 ### 1. aiohttp (3.9.1 → 3.13.3)
@@ -72,14 +88,14 @@ This security patch addresses multiple vulnerabilities identified in project dep
 
 ## Summary
 
-| Package | Old Version | New Version | Vulnerabilities Fixed |
-|---------|-------------|-------------|----------------------|
+| Package | Old Version | Current Version | Vulnerabilities Fixed |
+|---------|-------------|-----------------|----------------------|
 | aiohttp | 3.9.1 | 3.13.3 | 3 (zip bomb, DoS, directory traversal) |
 | fastapi | 0.104.1 | 0.109.1 | 1 (ReDoS) |
-| Pillow | 10.1.0 | 10.3.0 | 1 (buffer overflow) |
+| Pillow | 10.1.0 | 12.1.1 | 2 (buffer overflow, out-of-bounds write) |
 | python-multipart | 0.0.6 | 0.0.22 | 3 (file write, DoS, ReDoS) |
 
-**Total Vulnerabilities Fixed**: 8
+**Total Vulnerabilities Fixed**: 9
 
 ---
 
@@ -94,7 +110,7 @@ pip list | grep -E "aiohttp|fastapi|Pillow|python-multipart"
 # Expected output:
 # aiohttp              3.13.3
 # fastapi              0.109.1
-# Pillow               10.3.0
+# Pillow               12.1.1
 # python-multipart     0.0.22
 ```
 
@@ -125,11 +141,15 @@ These updates maintain backward compatibility with existing KimiClaw code. No co
 
 ## Security Scan Results
 
-- ✅ **Before Patch**: 8 vulnerabilities (4 HIGH, 4 MEDIUM)
-- ✅ **After Patch**: 0 vulnerabilities
+- ✅ **v0.1.0**: 8 vulnerabilities (4 HIGH, 4 MEDIUM)
+- ✅ **v0.1.1**: 0 vulnerabilities (8 fixed)
+- ⚠️  **v0.1.1**: 1 new vulnerability discovered (Pillow PSD)
+- ✅ **v0.1.2**: 0 vulnerabilities (9 total fixed)
 
 ---
 
 **Patch Date**: February 19, 2026
+**Latest Version**: v0.1.2
 **Severity**: HIGH (immediate update recommended)
 **Status**: ✅ Applied and Verified
+**Total Vulnerabilities Fixed**: 9

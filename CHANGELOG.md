@@ -5,6 +5,18 @@ All notable changes to KimiClaw Business OS will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.1.2] - 2024-02-19
+
+### Security
+
+- **HIGH**: Updated Pillow from 10.3.0 to 12.1.1
+  - Fixed out-of-bounds write vulnerability when loading PSD images
+  - Addresses CVE affecting Pillow versions ≥ 10.3.0, < 12.1.1
+
+**Total vulnerabilities fixed**: 9 (cumulative across all versions)
+
+See SECURITY_PATCH.md for detailed information.
+
 ## [0.1.1] - 2024-02-19
 
 ### Security
